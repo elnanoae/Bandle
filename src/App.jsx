@@ -1,3 +1,5 @@
+import bands from "./data/bands.json";
+
 import "./index.css";
 
 function App() {

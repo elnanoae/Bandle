@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "name": "Arctic Monkeys",
+    "country": "United Kingdom",
+    "city": "Sheffield",
+    "formed": 2002,
+    "genre": "Indie Rock",
+    "members": 4,
+    "albums": 7,
+    "status": "Active"
+  },
+  {
+    "id": 2,
+    "name": "Muse",
+    "country": "United Kingdom",
+    "city": "Teignmouth",
+    "formed": 1994,
+    "genre": "Alternative Rock",
+    "members": 3,
+    "albums": 9,
+    "status": "Active"
+  },
+  {
+    "id": 3,
+    "name": "Queen",
+    "country": "United Kingdom",
+    "city": "London",
+    "formed": 1970,
+    "genre": "Rock",
+    "members": 4,
+    "albums": 15,
+    "status": "Inactive"
+  },
+  {
+    "id": 4,
+    "name": "Metallica",
+    "country": "United States",
+    "city": "Los Angeles",
+    "formed": 1981,
+    "genre": "Heavy Metal",
+    "members": 4,
+    "albums": 11,
+    "status": "Active"
+  },
+  {
+    "id": 5,
+    "name": "Nirvana",
+    "country": "United States",
+    "city": "Aberdeen",
+    "formed": 1987,
+    "genre": "Grunge",
+    "members": 3,
+    "albums": 3,
+    "status": "Inactive"
+  },
+  {
+    "id": 6,
+    "name": "Radiohead",
+    "country": "United Kingdom",
+    "city": "Abingdon",
+    "formed": 1985,
+    "genre": "Alternative Rock",
+    "members": 5,
+    "albums": 9,
+    "status": "Active"
+  },
+  {
+    "id": 7,
+    "name": "The Beatles",
+    "country": "United Kingdom",
+    "city": "Liverpool",
+    "formed": 1960,
+    "genre": "Rock",
+    "members": 4,
+    "albums": 13,
+    "status": "Inactive"
+  },
+  {
+    "id": 8,
+    "name": "Foo Fighters",
+    "country": "United States",
+    "city": "Seattle",
+    "formed": 1994,
+    "genre": "Alternative Rock",
+    "members": 6,
+    "albums": 11,
+    "status": "Active"
+  },
+  {
+    "id": 9,
+    "name": "Green Day",
+    "country": "United States",
+    "city": "Berkeley",
+    "formed": 1987,
+    "genre": "Punk Rock",
+    "members": 3,
+    "albums": 14,
+    "status": "Active"
+  },
+  {
+    "id": 10,
+    "name": "Coldplay",
+    "country": "United Kingdom",
+    "city": "London",
+    "formed": 1996,
+    "genre": "Alternative Rock",
+    "members": 4,
+    "albums": 10,
+    "status": "Active"
+  }
+]
