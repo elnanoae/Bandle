@@ -1,0 +1,174 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #121212;
+  color: white;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+
+.header {
+  text-align: center;
+  padding: 30px 20px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.header h1 {
+  font-size: 3rem;
+  letter-spacing: 6px;
+}
+
+.header h1 span {
+  font-size: 2.5rem;
+}
+
+.header p {
+  color: #a0a0a0;
+  margin-top: 8px;
+}
+
+/* CONTENIDO */
+
+.game-container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  flex: 1;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.intro h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.intro p {
+  color: #b0b0b0;
+}
+
+/* BUSCADOR */
+
+.search-container {
+  display: flex;
+  gap: 10px;
+  max-width: 600px;
+  margin: 0 auto 25px;
+}
+
+.band-input {
+  flex: 1;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #1e1e1e;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+}
+
+.band-input:focus {
+  border-color: #1db954;
+}
+
+.guess-button {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 8px;
+  background: #1db954;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.guess-button:hover {
+  transform: scale(1.03);
+}
+
+/* INFO */
+
+.game-info {
+  text-align: center;
+  color: #aaa;
+  margin-bottom: 25px;
+}
+
+/* TABLA */
+
+.table-container {
+  width: 100%;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr 1.5fr 1fr;
+  gap: 8px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.table-header div {
+  background: #252525;
+  padding: 15px 8px;
+  border-radius: 6px;
+}
+
+.empty-game {
+  text-align: center;
+  padding: 50px;
+  background: #1a1a1a;
+  border-radius: 10px;
+  border: 1px dashed #444;
+  color: #888;
+}
+
+.empty-game span {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  border-top: 1px solid #2a2a2a;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .search-container {
+    flex-direction: column;
+  }
+
+  .table-header {
+    font-size: 0.7rem;
+  }
+
+  .table-header div {
+    padding: 10px 4px;
+  }
+}
