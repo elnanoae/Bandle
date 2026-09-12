@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./index.css";
 import bands from "./data/bands.json";
+import BandSearch from "./components/BandSearch";
 
 function App() {
   // Elegir una banda secreta aleatoria
@@ -91,27 +92,12 @@ function App() {
         </section>
 
         {!gameWon && (
-          <section className="search-container">
-            <input
-              type="text"
-              placeholder="Escribe una banda..."
-              className="band-input"
-              value={guess}
-              onChange={(e) => setGuess(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handleGuess();
-                }
-              }}
-            />
-
-            <button
-              className="guess-button"
-              onClick={handleGuess}
-            >
-              Adivinar
-            </button>
-          </section>
+          <BandSearch
+            bands={bands}
+            guess={guess}
+            setGuess={setGuess}
+            onGuess={handleGuess}
+          />
         )}
 
         {gameWon && (
