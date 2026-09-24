@@ -17,6 +17,7 @@ function App() {
   // Solo durante el desarrollo
   console.log("Banda secreta:", secretBand);
 
+  // Realizar un intento
   const handleGuess = () => {
     if (gameWon) return;
 
@@ -44,13 +45,18 @@ function App() {
     }
   };
 
-  // Comparar texto
+  // Comparar textos
   const compareText = (value, secretValue) => {
-    return value === secretValue ? "correct" : "incorrect";
+    if (value === secretValue) {
+      return "correct";
+    }
+
+    return "incorrect";
   };
 
   // Comparar números
   const compareNumber = (value, secretValue) => {
+    // Número exacto
     if (value === secretValue) {
       return {
         status: "correct",
@@ -58,6 +64,24 @@ function App() {
       };
     }
 
+    const difference = Math.abs(value - secretValue);
+
+    // Si están a menos de 5 unidades, damos una pista amarilla
+    if (difference <= 5) {
+      if (value < secretValue) {
+        return {
+          status: "partial",
+          arrow: "⬆️",
+        };
+      }
+
+      return {
+        status: "partial",
+        arrow: "⬇️",
+      };
+    }
+
+    // El valor es menor que el secreto
     if (value < secretValue) {
       return {
         status: "incorrect",
@@ -65,6 +89,7 @@ function App() {
       };
     }
 
+    // El valor es mayor que el secreto
     return {
       status: "incorrect",
       arrow: "⬇️",
@@ -143,6 +168,7 @@ function App() {
 
               return (
                 <div className="guess-row" key={band.id}>
+                  {/* Banda */}
                   <div
                     className={
                       band.id === secretBand.id
@@ -153,6 +179,7 @@ function App() {
                     {band.name}
                   </div>
 
+                  {/* País */}
                   <div
                     className={compareText(
                       band.country,
@@ -162,10 +189,12 @@ function App() {
                     {band.country}
                   </div>
 
+                  {/* Año */}
                   <div className={yearComparison.status}>
                     {band.formed} {yearComparison.arrow}
                   </div>
 
+                  {/* Género */}
                   <div
                     className={compareText(
                       band.genre,
@@ -175,6 +204,7 @@ function App() {
                     {band.genre}
                   </div>
 
+                  {/* Miembros */}
                   <div className={membersComparison.status}>
                     {band.members} {membersComparison.arrow}
                   </div>

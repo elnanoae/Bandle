@@ -275,3 +275,47 @@ footer {
   padding: 13px 15px;
   color: #888;
 }
+
+/* PISTA PARCIAL */
+
+.partial {
+  background: #d4a017;
+  color: white;
+}
+
+.correct {
+  background: #1db954;
+  color: white;
+}
+
+.incorrect {
+  background: #b83a3a;
+  color: white;
+}
+
+/* ANIMACIÓN DE LOS INTENTOS */
+
+.guess-row {
+  animation: guessAppear 0.4s ease-out;
+}
+
+@keyframes guessAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.guess-row div {
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.guess-row div:hover {
+  transform: scale(1.03);
+  filter: brightness(1.1);
+}
