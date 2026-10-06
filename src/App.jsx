@@ -47,11 +47,27 @@ function App() {
 
   // Comparar textos
   const compareText = (value, secretValue) => {
-    if (value === secretValue) {
-      return "correct";
-    }
+  if (value === secretValue) {
+    return "correct";
+  }
 
-    return "incorrect";
+  return "incorrect";
+  };
+
+  // Comparar Generos
+  const compareGenre = (band, secretBand) => {
+  // Mismo género exacto
+  if (band.genre === secretBand.genre) {
+    return "correct";
+  }
+
+  // Géneros de la misma categoría
+  if (band.genreCategory === secretBand.genreCategory) {
+    return "partial";
+  }
+
+  // Géneros diferentes
+  return "incorrect";
   };
 
   // Comparar números
@@ -196,11 +212,10 @@ function App() {
 
                   {/* Género */}
                   <div
-                    className={compareText(
-                      band.genre,
-                      secretBand.genre
-                    )}
-                  >
+                   className={compareGenre
+                   (band, 
+                   secretBand
+                   )}>
                     {band.genre}
                   </div>
 
