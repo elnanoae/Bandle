@@ -47,31 +47,30 @@ function App() {
 
   // Comparar textos
   const compareText = (value, secretValue) => {
-  if (value === secretValue) {
-    return "correct";
-  }
+    if (value === secretValue) {
+      return "correct";
+    }
 
-  return "incorrect";
+    return "incorrect";
   };
 
-  // Comparar Generos
+  // Comparar géneros
   const compareGenre = (band, secretBand) => {
-  // Mismo género exacto
-  if (band.genre === secretBand.genre) {
-    return "correct";
-  }
+    // Mismo género exacto
+    if (band.genre === secretBand.genre) {
+      return "correct";
+    }
 
-  // Géneros de la misma categoría
-  if (band.genreCategory === secretBand.genreCategory) {
-    return "partial";
-  }
+    // Géneros de la misma categoría
+    if (band.genreCategory === secretBand.genreCategory) {
+      return "partial";
+    }
 
-  // Géneros diferentes
-  return "incorrect";
+    return "incorrect";
   };
 
   // Comparar números
-  const compareNumber = (value, secretValue) => {
+  const compareNumber = (value, secretValue, partialDifference = 5) => {
     // Número exacto
     if (value === secretValue) {
       return {
@@ -82,8 +81,8 @@ function App() {
 
     const difference = Math.abs(value - secretValue);
 
-    // Si están a menos de 5 unidades, damos una pista amarilla
-    if (difference <= 5) {
+    // Número cercano
+    if (difference <= partialDifference) {
       if (value < secretValue) {
         return {
           status: "partial",
@@ -97,7 +96,7 @@ function App() {
       };
     }
 
-    // El valor es menor que el secreto
+    // El valor es menor
     if (value < secretValue) {
       return {
         status: "incorrect",
@@ -105,7 +104,7 @@ function App() {
       };
     }
 
-    // El valor es mayor que el secreto
+    // El valor es mayor
     return {
       status: "incorrect",
       arrow: "⬇️",
@@ -127,8 +126,8 @@ function App() {
           <h2>🎵 ¿Qué banda es?</h2>
 
           <p>
-            Introduce el nombre de una banda y descubre pistas sobre la banda
-            secreta.
+            Introduce el nombre de una banda y descubre pistas sobre la
+            banda secreta.
           </p>
         </section>
 
@@ -163,6 +162,7 @@ function App() {
             <div>Año</div>
             <div>Género</div>
             <div>Miembros</div>
+            <div>Álbumes</div>
           </div>
 
           {guesses.length === 0 ? (
@@ -174,12 +174,20 @@ function App() {
             guesses.map((band) => {
               const yearComparison = compareNumber(
                 band.formed,
-                secretBand.formed
+                secretBand.formed,
+                5
               );
 
               const membersComparison = compareNumber(
                 band.members,
-                secretBand.members
+                secretBand.members,
+                1
+              );
+
+              const albumsComparison = compareNumber(
+                band.albums,
+                secretBand.albums,
+                2
               );
 
               return (
@@ -211,17 +219,18 @@ function App() {
                   </div>
 
                   {/* Género */}
-                  <div
-                   className={compareGenre
-                   (band, 
-                   secretBand
-                   )}>
+                  <div className={compareGenre(band, secretBand)}>
                     {band.genre}
                   </div>
 
                   {/* Miembros */}
                   <div className={membersComparison.status}>
                     {band.members} {membersComparison.arrow}
+                  </div>
+
+                  {/* Álbumes */}
+                  <div className={albumsComparison.status}>
+                    {band.albums} {albumsComparison.arrow}
                   </div>
                 </div>
               );

@@ -70,8 +70,13 @@ body {
   margin: 0 auto 25px;
 }
 
-.band-input {
+.search-box {
+  position: relative;
   flex: 1;
+}
+
+.band-input {
+  width: 100%;
   padding: 15px;
   border-radius: 8px;
   border: 1px solid #444;
@@ -98,147 +103,6 @@ body {
 
 .guess-button:hover {
   transform: scale(1.03);
-}
-
-/* INFO */
-
-.game-info {
-  text-align: center;
-  color: #aaa;
-  margin-bottom: 25px;
-}
-
-/* TABLA */
-
-.table-container {
-  width: 100%;
-}
-
-.table-header {
-  display: grid;
-  grid-template-columns: 2fr 1.5fr 1fr 1.5fr 1fr;
-  gap: 8px;
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.table-header div {
-  background: #252525;
-  padding: 15px 8px;
-  border-radius: 6px;
-}
-
-.empty-game {
-  text-align: center;
-  padding: 50px;
-  background: #1a1a1a;
-  border-radius: 10px;
-  border: 1px dashed #444;
-  color: #888;
-}
-
-.empty-game span {
-  font-size: 3rem;
-  display: block;
-  margin-bottom: 15px;
-}
-
-/* FOOTER */
-
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #666;
-  border-top: 1px solid #2a2a2a;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 700px) {
-  .header h1 {
-    font-size: 2rem;
-  }
-
-  .search-container {
-    flex-direction: column;
-  }
-
-  .table-header {
-    font-size: 0.7rem;
-  }
-
-  .table-header div {
-    padding: 10px 4px;
-  }
-}
-
-/* FILAS DE INTENTOS */
-
-.guess-row {
-  display: grid;
-  grid-template-columns: 2fr 1.5fr 1fr 1.5fr 1fr;
-  gap: 8px;
-  margin-bottom: 8px;
-  text-align: center;
-}
-
-.guess-row div {
-  padding: 15px 8px;
-  border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 55px;
-  font-weight: bold;
-}
-
-/* RESULTADOS */
-
-.correct {
-  background: #1db954;
-  color: white;
-}
-
-.incorrect {
-  background: #b83a3a;
-  color: white;
-}
-
-/* MENSAJE DE VICTORIA */
-
-.win-message {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  text-align: center;
-  background: #1db954;
-  border-radius: 10px;
-  font-size: 1.1rem;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 700px) {
-  .guess-row {
-    grid-template-columns: 2fr 1.5fr 1fr 1.5fr 1fr;
-    font-size: 0.65rem;
-  }
-
-  .guess-row div {
-    padding: 10px 3px;
-    min-height: 50px;
-  }
-}
-/* BUSCADOR */
-
-.search-box {
-  position: relative;
-  flex: 1;
-}
-
-.search-box .band-input {
-  width: 100%;
 }
 
 /* SUGERENCIAS */
@@ -276,15 +140,72 @@ footer {
   color: #888;
 }
 
-/* PISTA PARCIAL */
+/* INFO */
 
-.partial {
-  background: #d4a017;
-  color: white;
+.game-info {
+  text-align: center;
+  color: #aaa;
+  margin-bottom: 25px;
 }
+
+/* TABLA */
+
+.table-container {
+  width: 100%;
+  
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr 1.5fr 1fr 1fr;
+  gap: 8px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.table-header div {
+  background: #252525;
+  padding: 15px 8px;
+  border-radius: 6px;
+}
+
+/* FILAS DE INTENTOS */
+
+.guess-row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr 1.5fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+  text-align: center;
+  animation: guessAppear 0.4s ease-out;
+}
+
+.guess-row div {
+  padding: 15px 8px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 55px;
+  font-weight: bold;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.guess-row div:hover {
+  transform: scale(1.03);
+  filter: brightness(1.1);
+}
+
+/* RESULTADOS */
 
 .correct {
   background: #1db954;
+  color: white;
+}
+
+.partial {
+  background: #d4a017;
   color: white;
 }
 
@@ -293,11 +214,36 @@ footer {
   color: white;
 }
 
-/* ANIMACIÓN DE LOS INTENTOS */
+/* JUEGO VACÍO */
 
-.guess-row {
-  animation: guessAppear 0.4s ease-out;
+.empty-game {
+  text-align: center;
+  padding: 50px;
+  background: #1a1a1a;
+  border-radius: 10px;
+  border: 1px dashed #444;
+  color: #888;
 }
+
+.empty-game span {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* MENSAJE DE VICTORIA */
+
+.win-message {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+  background: #1db954;
+  border-radius: 10px;
+  font-size: 1.1rem;
+}
+
+/* ANIMACIÓN */
 
 @keyframes guessAppear {
   from {
@@ -311,11 +257,37 @@ footer {
   }
 }
 
-.guess-row div {
-  transition: transform 0.2s, filter 0.2s;
+/* FOOTER */
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  border-top: 1px solid #2a2a2a;
 }
 
-.guess-row div:hover {
-  transform: scale(1.03);
-  filter: brightness(1.1);
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .search-container {
+    flex-direction: column;
+  }
+
+  .table-header,
+  .guess-row {
+    font-size: 0.65rem;
+  }
+
+  .table-header div {
+    padding: 10px 4px;
+  }
+
+  .guess-row div {
+    padding: 10px 3px;
+    min-height: 50px;
+  }
 }

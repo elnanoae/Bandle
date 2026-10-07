@@ -3,16 +3,25 @@ import { useState } from "react";
 function BandSearch({ bands, guess, setGuess, onGuess }) {
   const [showSuggestions, setShowSuggestions] = useState(false);
 
-  const filteredBands = bands.filter((band) =>
-    band.name.toLowerCase().includes(guess.toLowerCase())
-  );
+  // Filtrar bandas según lo que escribe el usuario
+  const filteredBands = bands
+    .filter((band) =>
+      band.name.toLowerCase().includes(guess.trim().toLowerCase())
+    )
+    .slice(0, 5);
 
+  // Seleccionar una banda de las sugerencias
   const selectBand = (band) => {
     setGuess(band.name);
     setShowSuggestions(false);
   };
 
+  // Realizar intento
   const handleSubmit = () => {
+    if (guess.trim() === "") {
+      return;
+    }
+
     onGuess();
     setShowSuggestions(false);
   };
@@ -47,6 +56,7 @@ function BandSearch({ bands, guess, setGuess, onGuess }) {
               filteredBands.map((band) => (
                 <button
                   key={band.id}
+                  type="button"
                   className="suggestion"
                   onClick={() => selectBand(band)}
                 >
@@ -63,6 +73,7 @@ function BandSearch({ bands, guess, setGuess, onGuess }) {
       </div>
 
       <button
+        type="button"
         className="guess-button"
         onClick={handleSubmit}
       >
