@@ -1127,5 +1127,115 @@
     "members": 6,
     "albums": 12,
     "status": "Inactive"
+  },
+  {
+    "id": 101,
+    "name": "Andy y Lucas",
+    "country": "Spain",
+    "city": "Cadiz",
+    "formed": 1999,
+    "genre": "Pop Rock",
+    "genreCategory": "Pop",
+    "members": 2,
+    "albums": 12,
+    "status": "Inactive"
+  },
+  {
+    "id": 102,
+    "name": "La Fuga",
+    "country": "Spain",
+    "city": "Reinosa",
+    "formed": 1996,
+    "genre": "Rock",
+    "genreCategory": "Rock",
+    "members": 4,
+    "albums": 10,
+    "status": "Active"
+  },
+  {
+    "id": 103,
+    "name": "Deep Purple",
+    "country": "United Kingdom",
+    "city": "Hertford",
+    "formed": 1968,
+    "genre": "Rock",
+    "genreCategory": "Rock",
+    "members": 5,
+    "albums": 24,
+    "status": "Active"
+  },
+  {
+    "id": 104,
+    "name": "Maná",
+    "country": "Mexico",
+    "city": "Guadalajara",
+    "formed": 1986,
+    "genre": "Pop Rock",
+    "genreCategory": "Pop",
+    "members": 4,
+    "albums": 9,
+    "status": "Active"
+  },
+  {
+    "id": 105,
+    "name": "M-Clan",
+    "country": "Spain",
+    "city": "Murcia",
+    "formed": 1993,
+    "genre": "Rock",
+    "genreCategory": "Rock",
+    "members": 5,
+    "albums": 9,
+    "status": "Active"
+  },
+  {
+    "id": 106,
+    "name": "Avril Lavigne",
+    "country": "Canada",
+    "city": "Burlington",
+    "formed": 2002,
+    "genre": "Pop Punk",
+    "genreCategory": "Punk",
+    "members": 1,
+    "albums": 7,
+    "status": "Active"
+  },
+  {
+    "id": 106,
+    "name": "Journey",
+    "country": "United States",
+    "city": "Cadiz",
+    "formed": 1973,
+    "genre": "Rock",
+    "genreCategory": "Rock",
+    "members": 5,
+    "albums": 15,
+    "status": "Active"
+  },
+  {
+    "id": 107,
+    "name": "Toto",
+    "country": "United States",
+    "city": "Los Angeles",
+    "formed": 1977,
+    "genre": "Rock",
+    "genreCategory": "Rock",
+    "members": 6,
+    "albums": 14,
+    "status": "Inactive"
+  },
+  {
+    "id": 108,
+    "name": "Eagles",
+    "country": "United States",
+    "city": "Los Angeles",
+    "formed": 1971,
+    "genre": "Country Rock",
+    "genreCategory": "Rock",
+    "members": 5 ,
+    "albums": 7,
+    "status": "Inactive"
   }
+  
+  
 ]
