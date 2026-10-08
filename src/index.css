@@ -42,7 +42,7 @@ body {
 
 .game-container {
   width: 90%;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 40px auto;
   flex: 1;
 }
@@ -152,12 +152,11 @@ body {
 
 .table-container {
   width: 100%;
-  
 }
 
 .table-header {
   display: grid;
-  grid-template-columns: 2fr 1.5fr 1fr 1.5fr 1fr 1fr;
+  grid-template-columns: 1.8fr 1.3fr 0.9fr 1.3fr 0.9fr 0.9fr 1fr;
   gap: 8px;
   text-align: center;
   font-weight: bold;
@@ -166,7 +165,7 @@ body {
 
 .table-header div {
   background: #252525;
-  padding: 15px 8px;
+  padding: 15px 6px;
   border-radius: 6px;
 }
 
@@ -174,7 +173,7 @@ body {
 
 .guess-row {
   display: grid;
-  grid-template-columns: 2fr 1.5fr 1fr 1.5fr 1fr 1fr;
+  grid-template-columns: 1.8fr 1.3fr 0.9fr 1.3fr 0.9fr 0.9fr 1fr;
   gap: 8px;
   margin-bottom: 8px;
   text-align: center;
@@ -182,7 +181,7 @@ body {
 }
 
 .guess-row div {
-  padding: 15px 8px;
+  padding: 15px 6px;
   border-radius: 6px;
   display: flex;
   justify-content: center;
@@ -283,11 +282,23 @@ footer {
   }
 
   .table-header div {
-    padding: 10px 4px;
+    padding: 10px 3px;
   }
 
   .guess-row div {
     padding: 10px 3px;
     min-height: 50px;
   }
+}
+
+/* MENSAJE DE DERROTA */
+
+.lose-message {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+  background: #b83a3a;
+  border-radius: 10px;
+  font-size: 1.1rem;
 }

@@ -3,8 +3,9 @@ import "./index.css";
 import bands from "./data/bands.json";
 import BandSearch from "./components/BandSearch";
 
+const MAX_ATTEMPTS = 8;
+
 function App() {
-  // Elegir una banda secreta aleatoria
   const [secretBand] = useState(() => {
     const randomIndex = Math.floor(Math.random() * bands.length);
     return bands[randomIndex];
@@ -13,13 +14,14 @@ function App() {
   const [guess, setGuess] = useState("");
   const [guesses, setGuesses] = useState([]);
   const [gameWon, setGameWon] = useState(false);
+  const [gameLost, setGameLost] = useState(false);
 
-  // Solo durante el desarrollo
   console.log("Banda secreta:", secretBand);
 
-  // Realizar un intento
+  const gameFinished = gameWon || gameLost;
+
   const handleGuess = () => {
-    if (gameWon) return;
+    if (gameFinished) return;
 
     const band = bands.find(
       (band) =>
@@ -36,16 +38,23 @@ function App() {
       return;
     }
 
-    setGuesses([...guesses, band]);
+    const newGuesses = [...guesses, band];
+
+    setGuesses(newGuesses);
     setGuess("");
 
-    // Comprobar si ha ganado
+    // Comprobar si ha acertado
     if (band.id === secretBand.id) {
       setGameWon(true);
+      return;
+    }
+
+    // Comprobar si ha llegado al límite
+    if (newGuesses.length >= MAX_ATTEMPTS) {
+      setGameLost(true);
     }
   };
 
-  // Comparar textos
   const compareText = (value, secretValue) => {
     if (value === secretValue) {
       return "correct";
@@ -54,14 +63,11 @@ function App() {
     return "incorrect";
   };
 
-  // Comparar géneros
   const compareGenre = (band, secretBand) => {
-    // Mismo género exacto
     if (band.genre === secretBand.genre) {
       return "correct";
     }
 
-    // Géneros de la misma categoría
     if (band.genreCategory === secretBand.genreCategory) {
       return "partial";
     }
@@ -69,9 +75,11 @@ function App() {
     return "incorrect";
   };
 
-  // Comparar números
-  const compareNumber = (value, secretValue, partialDifference = 5) => {
-    // Número exacto
+  const compareNumber = (
+    value,
+    secretValue,
+    partialDifference = 5
+  ) => {
     if (value === secretValue) {
       return {
         status: "correct",
@@ -81,7 +89,6 @@ function App() {
 
     const difference = Math.abs(value - secretValue);
 
-    // Número cercano
     if (difference <= partialDifference) {
       if (value < secretValue) {
         return {
@@ -96,7 +103,6 @@ function App() {
       };
     }
 
-    // El valor es menor
     if (value < secretValue) {
       return {
         status: "incorrect",
@@ -104,7 +110,6 @@ function App() {
       };
     }
 
-    // El valor es mayor
     return {
       status: "incorrect",
       arrow: "⬇️",
@@ -126,12 +131,12 @@ function App() {
           <h2>🎵 ¿Qué banda es?</h2>
 
           <p>
-            Introduce el nombre de una banda y descubre pistas sobre la
-            banda secreta.
+            Introduce el nombre de una banda y descubre pistas sobre
+            la banda secreta.
           </p>
         </section>
 
-        {!gameWon && (
+        {!gameFinished && (
           <BandSearch
             bands={bands}
             guess={guess}
@@ -147,12 +152,24 @@ function App() {
           </div>
         )}
 
+        {gameLost && (
+          <div className="lose-message">
+            💀 ¡Te has quedado sin intentos!
+            <br />
+            La banda era:{" "}
+            <strong>{secretBand.name}</strong>
+          </div>
+        )}
+
         <section className="game-info">
           <p>
-            🎯 Encuentra la banda secreta en el menor número de intentos.
+            🎯 Encuentra la banda secreta en el menor número de
+            intentos.
           </p>
 
-          <p>Intentos: {guesses.length}</p>
+          <p>
+            Intentos: {guesses.length} / {MAX_ATTEMPTS}
+          </p>
         </section>
 
         <section className="table-container">
@@ -163,6 +180,7 @@ function App() {
             <div>Género</div>
             <div>Miembros</div>
             <div>Álbumes</div>
+            <div>Estado</div>
           </div>
 
           {guesses.length === 0 ? (
@@ -190,9 +208,13 @@ function App() {
                 2
               );
 
+              const statusComparison = compareText(
+                band.status,
+                secretBand.status
+              );
+
               return (
                 <div className="guess-row" key={band.id}>
-                  {/* Banda */}
                   <div
                     className={
                       band.id === secretBand.id
@@ -203,7 +225,6 @@ function App() {
                     {band.name}
                   </div>
 
-                  {/* País */}
                   <div
                     className={compareText(
                       band.country,
@@ -213,24 +234,24 @@ function App() {
                     {band.country}
                   </div>
 
-                  {/* Año */}
                   <div className={yearComparison.status}>
                     {band.formed} {yearComparison.arrow}
                   </div>
 
-                  {/* Género */}
                   <div className={compareGenre(band, secretBand)}>
                     {band.genre}
                   </div>
 
-                  {/* Miembros */}
                   <div className={membersComparison.status}>
                     {band.members} {membersComparison.arrow}
                   </div>
 
-                  {/* Álbumes */}
                   <div className={albumsComparison.status}>
                     {band.albums} {albumsComparison.arrow}
+                  </div>
+
+                  <div className={statusComparison}>
+                    {band.status}
                   </div>
                 </div>
               );
